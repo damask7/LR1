@@ -31,17 +31,8 @@
 
             if ($id != 0)
                 $guards = $this->guards->GetGuardWithPost($id, $this->posts);
-            else{
-                $guardsList = $this->guards->GetRecords();
-                $postsList = $this->posts->GetRecords();
-
-                for($i = 0; $i < count($guardsList) ; $i++) {
-                    for($j = 0; $j < count($postsList) ; $j++) {
-                        if ($postsList[$j]['id'] == $guardsList[$i]['id_guard_post'])
-                            $guardsList[$i]['guard_post'] = $postsList[$j]['location'];
-                    }
-                }
-            }
+            else
+                $guards = $this->guards->GetRecords();
             require_once('Views/Other/Guards/show.php');
 
             require_once ('Views/Common/footer.php');
